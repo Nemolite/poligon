@@ -1,21 +1,5 @@
 <?php
-echo "<br>";
-echo "----------------------------------------";
-echo "<br>";
-echo "php 7";
-echo "<br>";
-echo "----------------------------------------";
-echo "<br>";
 
-echo "start";
-
-echo "<br>";
-echo "----------------------------------------";
-echo "<br>";
-echo "Using anonimus clases";
-echo "<br>";
-echo "----------------------------------------";
-echo "<br>";
 
 //phpinfo();
 class Dimler {
@@ -63,5 +47,31 @@ class Container {
 
 (new Container)->anonym()->printu();
 
+echo "трейт(trait)";
+
+trait Compliment 
+{
+	public function show($data){
+		
+		echo "<pre>";
+		print_r($data);
+		echo "</pre>";
+		
+	}
+}
+
+class UsingTrait 
+{
+	use Compliment;
+	
+	public $test = "test";
+	
+	public function let(){
+	$this->show($test);
+	}
+}
+
+$list = new UsingTrait();
+$list->let();
 
 ?>
