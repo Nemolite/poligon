@@ -1,77 +1,43 @@
 <?php
 
-
 //phpinfo();
-class Dimler {
-	public static function print($obj) {
-		echo "<pre>";
-		print_r($obj);
-		echo "</pre>";
-		
-	}
-}
-Dimler::print(
-	new Class {
-		public $title;
-		public function __construct()
-		{
-			$this->title = "Hello World";
-		}		
-	}
-);
 
-class Container {
-	private $title = "Класс Сontainer";
-	protected $id = 1;
-	
-	public function anonym()
-	{
-		return new class($this->title) extends Container
-		{
-			private $name;
-			
-			public function __construct($title)
-			{
-				$this->name = $title;
-			}
-			
-			public function printu()
-			{
-				echo "{$this->name}({$this->id})";
-			}
-		};
-	}
-	
-	
-}
-
-(new Container)->anonym()->printu();
-
-echo "трейт(trait)";
-
-trait Compliment 
+trait FirstTrait 
 {
-	public function show($data){
+	public function show(){
 		
-		echo "<pre>";
-		print_r($data);
-		echo "</pre>";
+		echo "trait FirstTrait ";
+		
 		
 	}
 }
 
-class UsingTrait 
+class StepTrait 
 {
-	use Compliment;
+	public function show(){
+		
+		echo "class StepTrait";
+	}
+}
+
+class UsingTrait extends StepTrait
+{
+	use FirstTrait;
 	
 	public $test = "test";
 	
-	public function let(){
+	public function __construct(){
 	$this->show($test);
+	}
+	
+	public function show(){
+		
+		echo "class UsingTrait";
+		
 	}
 }
 
 $list = new UsingTrait();
-$list->let();
+//$list->let();
 
 ?>
