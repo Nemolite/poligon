@@ -1,2 +1,2 @@
-# poligon
+# polygon
 The test PHP code (classes)
