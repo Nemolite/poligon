@@ -1,64 +1,67 @@
 <?php
+echo "<br>";
+echo "----------------------------------------";
+echo "<br>";
+echo "php 7";
+echo "<br>";
+echo "----------------------------------------";
+echo "<br>";
+
 echo "start";
-class Test {
-	protected $data=[];
-	
-	public function test2($in){
-		$this->data[$in] = $in;
+
+echo "<br>";
+echo "----------------------------------------";
+echo "<br>";
+echo "Using anonimus clases";
+echo "<br>";
+echo "----------------------------------------";
+echo "<br>";
+
+//phpinfo();
+class Dimler {
+	public static function print($obj) {
+		echo "<pre>";
+		print_r($obj);
+		echo "</pre>";
+		
 	}
-	public function get(){
-		if($this->data){
-		print_r($this->data);
-		}
-		else{
-			echo "NULL";
-		}
+}
+Dimler::print(
+	new Class {
+		public $title;
+		public function __construct()
+		{
+			$this->title = "Hello World";
+		}		
+	}
+);
+
+class Container {
+	private $title = "Класс Сontainer";
+	protected $id = 1;
+	
+	public function anonym()
+	{
+		return new class($this->title) extends Container
+		{
+			private $name;
+			
+			public function __construct($title)
+			{
+				$this->name = $title;
+			}
+			
+			public function printu()
+			{
+				echo "{$this->name}({$this->id})";
+			}
+		};
 	}
 	
 	
 }
 
-$obj = new Test();
-$data_in = "inner";
-$obj->test2($data_in);
-$obj->get();
-/**
-*new
-*/
-echo "<br>";
-class shape {
-	static $stat;
-	public $tmp;
-	
-	public function draw() {
-		echo "draw";
-		}
-	}
-	class circle extends shape {
-		public function draw($radius) {
-		// Проверка данных
-		if ($radius > 0) {
-		parent::draw();
-		return true;
-		}
-		
-		if ($radius < 0) {
-		self::$stat = $radius;
-		return true;
-		}
-		
-				
-	}
-}
-$testobj = new circle();
-print_r($testobj);
-echo "<br>";
-$testobj2 = new circle;
-print_r($testobj2);
-$testobj2->draw(-2);
-echo "<br>";
-print_r(shape::$stat);
-
+(new Container)->anonym()->printu();
 
 
 ?>
