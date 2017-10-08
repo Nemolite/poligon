@@ -1,43 +1,16 @@
 <?php
-
 //phpinfo();
+define('__ROOT__',$_SERVER['DOCUMENT_ROOT']); 
 
-trait FirstTrait 
-{
-	public function show(){
-		
-		echo "trait FirstTrait ";
-		
-		
-	}
-}
+require_once(__ROOT__.'/Test.php'); 
 
-class StepTrait 
-{
-	public function show(){
-		
-		echo "class StepTrait";
-	}
-}
+$obj = new Test; 
+$obj->set(20);
+$obj->show();
+//var_dump(parse_url($url));
 
-class UsingTrait extends StepTrait
-{
-	use FirstTrait;
-	
-	public $test = "test";
-	
-	public function __construct(){
-	$this->show($test);
-	}
-	
-	public function show(){
-		
-		echo "class UsingTrait";
-		
-	}
-}
 
-$list = new UsingTrait();
-//$list->let();
+
+
 
 ?>
