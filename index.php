@@ -1,54 +1,23 @@
 <?php
 //phpinfo();
 
-interface I 
-{ 
-     public function f(); 
-}
-class C implements I 
-{ 
-		public function f() {
-			
-		} 
-}
-
-
-class E 
-{
+function solution($N) {
+    $str_binary = decbin ($N);
+	$pieces = explode("1", $str_binary);
 	
-}
-
-function f(I $i) {
-    echo get_class($i)."\n";
-}
-
-f(new C);
-f(new E);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//$text = 'аоут';
-
-//$regular_expression ='/^[аоие\ёэыуюя].*$/';
-
-//if (preg_match($regular_expression,$text)){
-//	echo "ok";
-//} else {
-//	echo "no";
-//}
-
+	
+	$count = 0;
+	foreach ($pieces as $value){
+		if (strlen ($value)>$count){
+			$count = strlen ($value);
+		}
+	}
+	
+	echo $count;
+	
+	
+} 
+solution(1041);
 
 ?>
 
